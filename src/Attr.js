@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Row, Col } from "react-bootstrap";
 import { DiceRoll } from "rpg-dice-roller";
 
 const Attr = (props) => {
@@ -14,38 +14,96 @@ const Attr = (props) => {
   const handleShow = () => setShow(true);
 
   const [showCheck, setShowCheck] = useState(false);
+  const [showSaving, setShowSaving] = useState(false);
   const [rolled, setRolled] = useState("0");
 
-  const rollCheck = (mod) => {
-    const roll = new DiceRoll("d20" + mod);
-    setRolled(roll.output);
-    setShowCheck(true);
+  const rollCheck = (mod, check) => {
+    let roll;
+    if (check) {
+      roll = new DiceRoll("d20" + mod);
+      setShowCheck(true);
+      setShowSaving(false);
+      setRolled(roll.output);
+    } else {
+      roll = new DiceRoll(
+        "d20" + mod + (props.proficient ? `+${props.proficiencyBonus}` : "+0")
+      );
+      setShowCheck(false);
+      setShowSaving(true);
+      setRolled(roll.output);
+    }
   };
 
   return (
-    <>
+    <div className="text-center">
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>VAMO ROLAR {props.title} CARAI!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {!showCheck && (
+          {!showCheck && !showSaving && (
             <div>
-              Quer fazer um Check ou Saving Throw?
+              <h4>Quer fazer um Check ou Saving Throw?</h4>
               <div className="d-flex justify-content-center  mt-2">
                 <Button
                   className="mx-2"
                   variant="primary"
                   onClick={() => {
-                    rollCheck(props.mod);
+                    rollCheck(props.mod, true);
                   }}
                 >
                   Check
                 </Button>
+                <Button
+                  className="mx-2"
+                  variant="primary"
+                  onClick={() => {
+                    rollCheck(props.mod, false);
+                  }}
+                >
+                  Saving Throw
+                </Button>
               </div>
             </div>
           )}
-          {showCheck && <h4>RESULTADO: {rolled}</h4>}
+          {showCheck && (
+            <>
+              <Row>
+                <Col>
+                  <h4>RESULTADO: {rolled}</h4>
+                  <div className="d-flex justify-content-center  mt-2">
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        rollCheck(props.mod, true);
+                      }}
+                    >
+                      Rerolar
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+            </>
+          )}
+          {showSaving && (
+            <>
+              <Row>
+                <Col>
+                  <h4>RESULTADO: {rolled}</h4>
+                  <div className="d-flex justify-content-center  mt-2">
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        rollCheck(props.mod, false);
+                      }}
+                    >
+                      Rerolar
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+            </>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -65,7 +123,7 @@ const Attr = (props) => {
           <h5 className="border">{props.mod}</h5>
         </div>
       </button>
-    </>
+    </div>
   );
 };
 

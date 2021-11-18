@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Attr from "./Attr";
 
 export function Upload({ children }) {
@@ -57,50 +57,70 @@ export function Upload({ children }) {
             <div>
               <h3 className="mb-3">Nome: {files.name}</h3>
               <h3 className="mb-3">Habilidades:</h3>
-              <div className="d-flex ">
-                <div className="col text-center">
-                  <Attr
-                    title={"STR"}
-                    value={files.data.abilities.str.value}
-                    mod={returnMod(files.data.abilities.str.value)}
-                  />
-                </div>
-                <div className="col text-center">
-                  <Attr
-                    title={"DEX"}
-                    value={files.data.abilities.dex.value}
-                    mod={returnMod(files.data.abilities.dex.value)}
-                  />
-                </div>
-                <div className="col text-center">
-                  <Attr
-                    title={"CON"}
-                    value={files.data.abilities.con.value}
-                    mod={returnMod(files.data.abilities.con.value)}
-                  />
-                </div>
-                <div className="col text-center">
-                  <Attr
-                    title={"INT"}
-                    value={files.data.abilities.int.value}
-                    mod={returnMod(files.data.abilities.int.value)}
-                  />
-                </div>
-                <div className="col text-center">
-                  <Attr
-                    title={"WIS"}
-                    value={files.data.abilities.wis.value}
-                    mod={returnMod(files.data.abilities.wis.value)}
-                  />
-                </div>
-                <div className="col text-center">
-                  <Attr
-                    title={"CHA"}
-                    value={files.data.abilities.cha.value}
-                    mod={returnMod(files.data.abilities.cha.value)}
-                  />
-                </div>
-              </div>
+              <Container>
+                <Row>
+                  <Col>
+                    {" "}
+                    <Attr
+                      title={"STR"}
+                      value={files.data.abilities.str.value}
+                      mod={returnMod(files.data.abilities.str.value)}
+                      proficient={files.data.abilities.str.proficient}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                  <Col>
+                    {" "}
+                    <Attr
+                      title={"DEX"}
+                      value={files.data.abilities.dex.value}
+                      mod={returnMod(files.data.abilities.dex.value)}
+                      proficient={files.data.abilities.dex.proficient}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                  <Col>
+                    {" "}
+                    <Attr
+                      title={"CON"}
+                      value={files.data.abilities.con.value}
+                      mod={returnMod(files.data.abilities.con.value)}
+                      proficient={files.data.abilities.con.proficient}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                  <Col>
+                    {" "}
+                    <Attr
+                      title={"INT"}
+                      value={files.data.abilities.int.value}
+                      mod={returnMod(files.data.abilities.int.value)}
+                      proficient={files.data.abilities.int.proficient}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                  <Col>
+                    {" "}
+                    <Attr
+                      title={"WIS"}
+                      value={files.data.abilities.wis.value}
+                      mod={returnMod(files.data.abilities.wis.value)}
+                      proficient={files.data.abilities.wis.proficient}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                  <Col>
+                    {" "}
+                    <Attr
+                      title={"CHA"}
+                      value={files.data.abilities.cha.value}
+                      mod={returnMod(files.data.abilities.cha.value)}
+                      proficient={files.data.abilities.cha.proficient}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                </Row>
+              </Container>
             </div>
           )}
         </div>
