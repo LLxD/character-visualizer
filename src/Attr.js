@@ -6,7 +6,11 @@ import { DiceRoll } from "rpg-dice-roller";
 const Attr = (props) => {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setShowCheck(false);
+  };
+
   const handleShow = () => setShow(true);
 
   const [showCheck, setShowCheck] = useState(false);
