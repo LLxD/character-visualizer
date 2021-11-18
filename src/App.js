@@ -6,9 +6,7 @@ import { Upload } from "./Upload";
 function App() {
   return (
     <div className="App">
-      <Upload>
-        <button>Upload Files</button>
-      </Upload>
+      <Upload></Upload>
     </div>
   );
 }
