@@ -9,6 +9,7 @@ const Attr = (props) => {
   const handleClose = () => {
     setShow(false);
     setShowCheck(false);
+    setShowSaving(false);
   };
 
   const handleShow = () => setShow(true);
