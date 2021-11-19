@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Attr from "./Attr";
+import Skills from "./Skills";
 
 export function Upload({ children }) {
   const [files, setFiles] = useState("");
+  const [upload, setUpload] = useState(true);
 
   const handleChange = (e) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
-      console.log("e.target.result", e.target.result);
       setFiles(JSON.parse(e.target.result));
+      setUpload(false);
     };
   };
 
@@ -44,18 +46,22 @@ export function Upload({ children }) {
   return (
     <>
       <Container>
-        <div className="">
-          <h1>Ficha :D</h1>
-          <input
-            accept=".json"
-            type="file"
-            onChange={handleChange}
-            className="mb-5"
-          />
-          <br />
+        <div>
+          {upload && (
+            <>
+              <h1 className="mt-5">Ficha :D</h1>
+              <input
+                accept=".json"
+                type="file"
+                onChange={handleChange}
+                className="mb-5"
+              />
+              <br />
+            </>
+          )}
           {(files === "" ? false : true) && (
             <div>
-              <h3 className="mb-3">Nome: {files.name}</h3>
+              <h3 className="mb-3 mt-2">Nome: {files.name}</h3>
               <h3 className="mb-3">Habilidades:</h3>
               <Container>
                 <Row>
@@ -121,6 +127,35 @@ export function Upload({ children }) {
                   </Col>
                 </Row>
               </Container>
+              <Container>
+                <Row>
+                  <Col>
+                    <Skills
+                      modArray={[
+                        returnMod(files.data.abilities.str.value),
+                        returnMod(files.data.abilities.dex.value),
+                        returnMod(files.data.abilities.con.value),
+                        returnMod(files.data.abilities.int.value),
+                        returnMod(files.data.abilities.wis.value),
+                        returnMod(files.data.abilities.cha.value),
+                      ]}
+                      skills={files.data.skills}
+                      proficiencyBonus={files.data.attributes.prof}
+                    />
+                  </Col>
+                </Row>
+              </Container>
+              <div className="d-flex justify-content-center">
+                <Button
+                  className="mt-5"
+                  variant="primary"
+                  onClick={() => {
+                    setUpload(!upload);
+                  }}
+                >
+                  Esconder/Abrir Upload
+                </Button>
+              </div>
             </div>
           )}
         </div>
