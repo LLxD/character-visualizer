@@ -22,7 +22,7 @@ const Skills = (props) => {
     }
     let proficient = props.skills[`${key}`].value;
     skillsArray.push(
-      <>
+      <div key={index}>
         <Col className="d-flex" xl={1}>
           <h4>{key}</h4>
           <h6>({ability})</h6>
@@ -34,15 +34,15 @@ const Skills = (props) => {
               : props.modArray[abilityPosition]}
           </h5>
         </Col>
-      </>
+      </div>
     );
   });
   return (
     <div>
       <Container className="d-flex flex-wrap row mt-5 justify-content-center">
-        <Row>
+        <Row sm={2} xl={6}>
           {skillsArray.map((index) => {
-            return index;
+            return <Col>{index}</Col>;
           })}
         </Row>
       </Container>

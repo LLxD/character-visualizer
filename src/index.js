@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Upload } from "./Upload";
+import { Upload } from "./components/Upload";
 
 function App() {
   return (
