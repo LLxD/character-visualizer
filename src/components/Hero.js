@@ -41,60 +41,60 @@ const Hero = (props) => {
             {" "}
             <Attr
               title={"STR"}
-              value={files.data.abilities.str.value}
-              mod={returnMod(files.data.abilities.str.value)}
-              proficient={files.data.abilities.str.proficient}
-              proficiencyBonus={files.data.attributes.prof}
+              value={files.system.abilities.str.value}
+              mod={returnMod(files.system.abilities.str.value)}
+              proficient={files.system.abilities.str.proficient}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
           <Col>
             {" "}
             <Attr
               title={"DEX"}
-              value={files.data.abilities.dex.value}
-              mod={returnMod(files.data.abilities.dex.value)}
-              proficient={files.data.abilities.dex.proficient}
-              proficiencyBonus={files.data.attributes.prof}
+              value={files.system.abilities.dex.value}
+              mod={returnMod(files.system.abilities.dex.value)}
+              proficient={files.system.abilities.dex.proficient}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
           <Col>
             {" "}
             <Attr
               title={"CON"}
-              value={files.data.abilities.con.value}
-              mod={returnMod(files.data.abilities.con.value)}
-              proficient={files.data.abilities.con.proficient}
-              proficiencyBonus={files.data.attributes.prof}
+              value={files.system.abilities.con.value}
+              mod={returnMod(files.system.abilities.con.value)}
+              proficient={files.system.abilities.con.proficient}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
           <Col>
             {" "}
             <Attr
               title={"INT"}
-              value={files.data.abilities.int.value}
-              mod={returnMod(files.data.abilities.int.value)}
-              proficient={files.data.abilities.int.proficient}
-              proficiencyBonus={files.data.attributes.prof}
+              value={files.system.abilities.int.value}
+              mod={returnMod(files.system.abilities.int.value)}
+              proficient={files.system.abilities.int.proficient}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
           <Col>
             {" "}
             <Attr
               title={"WIS"}
-              value={files.data.abilities.wis.value}
-              mod={returnMod(files.data.abilities.wis.value)}
-              proficient={files.data.abilities.wis.proficient}
-              proficiencyBonus={files.data.attributes.prof}
+              value={files.system.abilities.wis.value}
+              mod={returnMod(files.system.abilities.wis.value)}
+              proficient={files.system.abilities.wis.proficient}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
           <Col>
             {" "}
             <Attr
               title={"CHA"}
-              value={files.data.abilities.cha.value}
-              mod={returnMod(files.data.abilities.cha.value)}
-              proficient={files.data.abilities.cha.proficient}
-              proficiencyBonus={files.data.attributes.prof}
+              value={files.system.abilities.cha.value}
+              mod={returnMod(files.system.abilities.cha.value)}
+              proficient={files.system.abilities.cha.proficient}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
         </Row>
@@ -104,15 +104,15 @@ const Hero = (props) => {
           <Col>
             <Skills
               modArray={[
-                returnMod(files.data.abilities.str.value),
-                returnMod(files.data.abilities.dex.value),
-                returnMod(files.data.abilities.con.value),
-                returnMod(files.data.abilities.int.value),
-                returnMod(files.data.abilities.wis.value),
-                returnMod(files.data.abilities.cha.value),
+                returnMod(files.system.abilities.str.value),
+                returnMod(files.system.abilities.dex.value),
+                returnMod(files.system.abilities.con.value),
+                returnMod(files.system.abilities.int.value),
+                returnMod(files.system.abilities.wis.value),
+                returnMod(files.system.abilities.cha.value),
               ]}
-              skills={files.data.skills}
-              proficiencyBonus={files.data.attributes.prof}
+              skills={files.system.skills}
+              proficiencyBonus={files.system.attributes.prof}
             />
           </Col>
         </Row>
